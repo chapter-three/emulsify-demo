@@ -16,6 +16,7 @@ const jsPattern = path.resolve(
 );
 
 // Prepare list of scss and js file for "entry".
+// eslint-disable-next-line no-shadow
 function getEntries(scssPattern, jsPattern) {
   const entries = {};
 
@@ -23,6 +24,7 @@ function getEntries(scssPattern, jsPattern) {
   glob.sync(scssPattern).forEach((file) => {
     const filePath = file.split('components/')[1];
     const newfilePath = `css/${filePath.replace('.scss', '')}`;
+    // eslint-disable-next-line security/detect-object-injection
     entries[newfilePath] = file;
   });
 
